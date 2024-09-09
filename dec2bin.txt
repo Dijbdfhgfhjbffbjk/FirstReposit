@@ -1,0 +1,24 @@
+#include <cmath>
+//using  namespace std;
+string dec2bin(int a) {
+    string rslt;
+    int prerslt = 1;
+    int schetchik = 0;
+    while (prerslt < a) {
+        prerslt *= 2;
+        schetchik++;
+    }
+    int mx_sch = schetchik;
+    for (int i = 0; i < schetchik; i++) { rslt += '0'; }
+    while (schetchik>=1) {
+        if (schetchik == 1 && a==1) { rslt[rslt.size()-1]='1'; }
+        if (pow(2, schetchik-1) <= a) {
+            rslt[mx_sch-schetchik] = '1';
+            schetchik--;
+            a -= pow(2, schetchik);
+        }
+        else{schetchik--;}
+        
+    }
+    return rslt;
+}
